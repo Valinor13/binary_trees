@@ -18,10 +18,16 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node)
 		temp = node->parent;
 		if (temp->parent)
 		{
-			if (temp->parent->left->n == temp->n)
-				return (temp->parent->right);
-			else if (temp->parent->right->n == temp->n)
-				return (temp->parent->left);
+			if ((temp->parent->left) && (temp->parent->left->n == temp->n))
+			{
+				if (temp->parent->right)
+					return (temp->parent->right);
+			}
+			if ((temp->parent->right) && (temp->parent->right->n == temp->n))
+			{
+				if (temp->parent->left)
+					return (temp->parent->left);
+			}
 		}
 	}
 	return (NULL);
